@@ -1,0 +1,46 @@
+type User {
+  id: ID! @unique
+  name: String!
+  email: String @unique
+  password: String
+}
+
+type Golfer {
+  id: ID! @unique
+  firstName: String!
+  lastName: String!
+}
+
+type Course {
+  id: ID! @unique
+  courseName: String!
+  courseAddress: String!
+  coursePhone: String!
+  long: Float!
+  lat: Float!
+  numberOfHoles: Int!
+  holes: [Hole!]!
+}
+
+type Hole {
+  id: ID! @unique 
+  holeNum: Int!
+  par: Int!
+  blueTee: Int!
+  whiteTee: Int!
+  redTee: Int!
+  scores: [Stroke!]!
+}
+
+type Scorecard {
+  id: ID! @unique
+  golfers: [Golfer!]!
+  course: Course!
+  holes: [Hole!]!
+}
+
+type Stroke {
+  id: ID! @unique
+  golfer: User!
+  strokes: Int!
+}
